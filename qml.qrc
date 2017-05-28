@@ -1,12 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/main.cpp</file>
         <file>ui/HomeScreen/MainForm.ui.qml</file>
         <file>ui/HomeScreen/menu-icon.qml</file>
         <file>ui/HomeScreen/MenuBackIcon.qml</file>
         <file>ui/main.qml</file>
-        <file>deployment.pri</file>
-        <file>qml.qrc</file>
-        <file>RaspiClock.pro</file>
     </qresource>
 </RCC>
