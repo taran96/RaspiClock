@@ -1,60 +1,70 @@
-import QtQuick 2.2
+import QtQuick 2.7
+
 
 Item {
-  id: root
-  width: 24
-  height: 24
+    id: mainRect
 
-  Rectangle {
-    id: bar1
-    x: 2
-    y: 5
-    width: 20
-    height: 2
-    antialiasing: true
-  }
-
-  Rectangle {
-    id: bar2
-    x: 2
-    y: 10
-    width: 20
-    height: 2
-    antialiasing: true
-  }
-
-  Rectangle {
-    id: bar3
-    x: 2
-    y: 15
-    width: 20
-    height: 2
-    antialiasing: true
-  }
-
-  property int animationDuration: 350
-
-  state: "menu"
-  states: [
-    State {
-      name: "menu"
-    },
-
-    State {
-      name: "back"
-      PropertyChanges { target: root; rotation: 180 }
-      PropertyChanges { target: bar1; rotation: 45; width: 13; x: 9.5; y: 8 }
-      PropertyChanges { target: bar2; width: 17; x: 3; y: 12 }
-      PropertyChanges { target: bar3; rotation: -45; width: 13; x: 9.5; y: 16 }
+    MouseArea {
+        z: 1
+        anchors.fill: parent
+        onClicked: mainRect.state = mainRect.state == "menu" ? "back" : "menu"
     }
-  ]
 
-  transitions: [
-    Transition {
-      RotationAnimation { target: root; direction: RotationAnimation.Clockwise; duration: animationDuration; easing.type: Easing.InOutQuad }
-      PropertyAnimation { target: bar1; properties: "rotation, width, x, y"; duration: animationDuration; easing.type: Easing.InOutQuad }
-      PropertyAnimation { target: bar2; properties: "rotation, width, x, y"; duration: animationDuration; easing.type: Easing.InOutQuad }
-      PropertyAnimation { target: bar3; properties: "rotation, width, x, y"; duration: animationDuration; easing.type: Easing.InOutQuad }
+    property real radius: 3
+
+    Rectangle {
+      id: bar1
+      x: 0
+      y: parent.height * .25
+      width: parent.width
+      height: parent.height * .10
+      radius: parent.radius
+      antialiasing: true
     }
-  ]
+
+    Rectangle {
+      id: bar2
+      x: 0
+      y: parent.height * .5
+      width: parent.width
+      height: parent.height * .10
+      radius: parent.radius
+      antialiasing: true
+    }
+
+    Rectangle {
+      id: bar3
+      x: 0
+      y: parent.height * .75
+      width: parent.width
+      height: parent.height * .10
+      radius: parent.radius
+      antialiasing: true
+    }
+
+    property int animationDuration: 350
+
+    state: "menu"
+    states: [
+      State {
+        name: "menu"
+      },
+
+      State {
+        name: "back"
+        PropertyChanges { target: mainRect; rotation: 180 }
+        PropertyChanges { target: bar1; rotation: 45; width: mainRect.width * .6; x: mainRect.width * .48; y: mainRect.height * .33 - bar1.height }
+        PropertyChanges { target: bar2; width: mainRect.width * .8; x: mainRect.width * .2; y: mainRect.height * .5 - bar2.height }
+        PropertyChanges { target: bar3; rotation: -45; width: mainRect.width * .6; x: mainRect.width * .48; y: mainRect.height * .67 - bar3.height }
+      }
+    ]
+
+    transitions: [
+      Transition {
+        RotationAnimation { target: mainRect; direction: RotationAnimation.Clockwise; duration: animationDuration; easing.type: Easing.InOutQuad }
+        PropertyAnimation { target: bar1; properties: "rotation, width, x, y"; duration: animationDuration; easing.type: Easing.InOutQuad }
+        PropertyAnimation { target: bar2; properties: "rotation, width, x, y"; duration: animationDuration; easing.type: Easing.InOutQuad }
+        PropertyAnimation { target: bar3; properties: "rotation, width, x, y"; duration: animationDuration; easing.type: Easing.InOutQuad }
+      }
+    ]
 }

@@ -1,8 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>ui/HomeScreen/MainForm.ui.qml</file>
-        <file>ui/HomeScreen/menu-icon.qml</file>
         <file>ui/HomeScreen/MenuBackIcon.qml</file>
         <file>ui/main.qml</file>
+        <file>ui/HomeScreen/Clock.qml</file>
+        <file>fonts/Roboto Mono Light for Powerline.ttf</file>
     </qresource>
 </RCC>
