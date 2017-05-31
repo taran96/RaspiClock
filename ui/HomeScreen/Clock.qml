@@ -28,7 +28,7 @@ Item {
             if (hour > 12) {
                 hour = hour - 12
             }
-            if (hour > 10) {
+            if (hour >= 10) {
                 clockText.text = "" + hour + ":" + min
             } else {
                 clockText.text = "0" + hour + ":" + min
